@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מאגר הפניות של הרשת שלי</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f8f9fa; --card: #ffffff; --border: #e8e8e8; --text: #1a1a1a;
+      --text-secondary: #666; --text-muted: #999; --accent: #1a1a1a;
+      --accent-light: #f0f0f0; --success: #22c55e; --radius: 12px;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+    .header { background: var(--card); border-bottom: 1px solid var(--border); padding: 20px 16px; position: sticky; top: 0; z-index: 100; }
+    .header-inner { max-width: 720px; margin: 0 auto; }
+    .header h1 { font-size: 20px; font-weight: 700; margin-bottom: 2px; }
+    .header .subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+    .search-box { position: relative; }
+    .search-box input { width: 100%; padding: 10px 40px 10px 40px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; background: var(--bg); direction: rtl; transition: border-color 0.2s, background 0.2s; }
+    .search-box input:focus { outline: none; border-color: #aaa; background: var(--card); }
+    .search-box .search-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 16px; }
+    .search-box .clear-btn { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 16px; display: none; }
+    .search-box .clear-btn.visible { display: block; }
+    .filters { max-width: 720px; margin: 16px auto 0; padding: 0 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); font-size: 12px; font-weight: 500; cursor: pointer; transition: all 0.15s; color: var(--text-secondary); }
+    .filter-btn:hover { background: var(--accent-light); }
+    .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+    .filter-btn .count { font-size: 11px; opacity: 0.7; margin-right: 4px; }
+    .main { max-width: 720px; margin: 0 auto; padding: 20px 16px; }
+    .results-count { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; margin-bottom: 10px; cursor: pointer; transition: box-shadow 0.15s; }
+    .card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .card-name { font-size: 16px; font-weight: 600; }
+    .card-title { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+    .card-toggle { flex-shrink: 0; color: var(--text-muted); font-size: 18px; transition: transform 0.2s; }
+    .card.expanded .card-toggle { transform: rotate(180deg); }
+    .card-cluster { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; margin-top: 10px; }
+    .cluster-founder-bottleneck { background: #fee2e2; color: #991b1b; }
+    .cluster-automation-paralysis { background: #dbeafe; color: #1e40af; }
+    .cluster-ai-theater { background: #f3e8ff; color: #6b21a8; }
+    .cluster-promoted-not-equipped { background: #fef9c3; color: #854d0e; }
+    .cluster-first-impression-failure { background: #ffedd5; color: #9a3412; }
+    .cluster-expert-ranking { background: #dcfce7; color: #166534; }
+    .cluster-uncategorized { background: #f3f4f6; color: #4b5563; }
+    .card-problem { margin-top: 12px; }
+    .card-problem .label, .card-solution .label { font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+    .card-problem p, .card-solution p { font-size: 14px; color: var(--text); line-height: 1.5; }
+    .card-details { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); }
+    .card.expanded .card-details { display: block; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .tag { padding: 2px 8px; background: var(--accent-light); border-radius: 4px; font-size: 11px; color: var(--text-secondary); }
+    .card-meta { margin-top: 10px; font-size: 11px; color: var(--text-muted); }
+    .add-section { max-width: 720px; margin: 0 auto; padding: 0 16px 40px; }
+    .add-toggle { width: 100%; padding: 12px; border: 2px dashed var(--border); border-radius: var(--radius); background: transparent; cursor: pointer; font-size: 14px; color: var(--text-muted); transition: all 0.15s; }
+    .add-toggle:hover { border-color: #aaa; color: var(--text-secondary); }
+    .add-form { display: none; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .add-form.visible { display: block; }
+    .add-form h3 { font-size: 16px; margin-bottom: 16px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; font-family: inherit; direction: rtl; }
+    .form-group textarea { resize: vertical; min-height: 60px; }
+    .form-actions { display: flex; gap: 8px; margin-top: 16px; }
+    .btn-primary { padding: 8px 20px; background: var(--accent); color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; }
+    .btn-secondary { padding: 8px 20px; background: var(--accent-light); color: var(--text); border: none; border-radius: 6px; font-size: 14px; cursor: pointer; }
+    .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-size: 13px; transition: transform 0.3s; z-index: 200; }
+    .toast.visible { transform: translateX(-50%) translateY(0); }
+    .empty { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 14px; }
+    .footer { text-align: center; padding: 20px; font-size: 11px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="header"><div class="header-inner">
+    <h1>מאגר הפניות של הרשת שלי</h1>
+    <div class="subtitle">חפש לפי בעיה, פתרון, שם, או תחום. <span id="total-count"></span> אנשי מקצוע.</div>
+    <div class="search-box"><span class="search-icon">🔍</span><input type="text" id="search" placeholder='למשל: "AI", "מנהלים", "סטארטאפים", "תפעול"...' /><button class="clear-btn" id="clear-search">✕</button></div>
+  </div></div>
+  <div class="filters" id="filters"></div>
+  <div class="main"><div class="results-count" id="results-count"></div><div id="cards"></div></div>
+  <div class="add-section">
+    <button class="add-toggle" id="add-toggle">+ הוסף איש מקצוע למאגר</button>
+    <div class="add-form" id="add-form">
+      <h3>הוספת איש מקצוע חדש</h3>
+      <div class="form-group"><label>שם מלא *</label><input type="text" id="f-name" /></div>
+      <div class="form-group"><label>תפקיד / תיאור</label><input type="text" id="f-title" /></div>
+      <div class="form-group"><label>הבעיה שאת/ה פותר/ת *</label><textarea id="f-problem"></textarea></div>
+      <div class="form-group"><label>הפתרון *</label><textarea id="f-solution"></textarea></div>
+      <div class="form-group"><label>אשכול בעיה</label><select id="f-cluster"><option value="founder-bottleneck">צוואר בקבוק מייסד</option><option value="automation-paralysis">שיתוק אוטומציה</option><option value="ai-theater">תיאטרון AI</option><option value="promoted-not-equipped">קידום בלי ציוד</option><option value="first-impression-failure">כשל רושם ראשוני</option><option value="expert-ranking">דירוג מומחים</option><option value="uncategorized" selected>ללא סיווג</option></select></div>
+      <div class="form-group"><label>תגיות (מופרדות בפסיק)</label><input type="text" id="f-tags" placeholder="AI, תפעול, SMB" /></div>
+      <div class="form-actions"><button class="btn-primary" id="submit-person">הוסף</button><button class="btn-secondary" id="cancel-add">ביטול</button></div>
+    </div>
+  </div>
+  <div class="footer">COR-SYS — מאגר הפניות. מאורגן לפי בעיה ופתרון, לא לפי תפקיד.</div>
+  <div class="toast" id="toast"></div>
+<script>
+const API = window.location.origin + "/api";
+const CLUSTER_META = {
+  "founder-bottleneck": { label: "צוואר בקבוק מייסד", icon: "🔒" },
+  "automation-paralysis": { label: "שיתוק אוטומציה", icon: "⚙️" },
+  "ai-theater": { label: "תיאטרון AI", icon: "🎭" },
+  "promoted-not-equipped": { label: "קידום בלי ציוד", icon: "📈" },
+  "first-impression-failure": { label: "כשל רושם ראשוני", icon: "👁️" },
+  "expert-ranking": { label: "דירוג מומחים", icon: "🏅" },
+  "uncategorized": { label: "ללא סיווג", icon: "📋" },
+};
+let allPeople = [], activeCluster = null, expandedId = null;
+
+async function fetchPeople(q, cluster) {
+  const params = new URLSearchParams();
+  if (q) params.set("q", q);
+  if (cluster) params.set("cluster", cluster);
+  const res = await fetch(API + "/people?" + params);
+  const data = await res.json();
+  return data.people;
+}
+async function fetchAll() {
+  const res = await fetch(API + "/people");
+  const data = await res.json();
+  allPeople = data.people;
+  return allPeople;
+}
+function renderFilters() {
+  const counts = {};
+  for (const p of allPeople) counts[p.cluster] = (counts[p.cluster] || 0) + 1;
+  let html = '<button class="filter-btn ' + (!activeCluster ? "active" : "") + '" data-cluster="">הכל <span class="count">' + allPeople.length + "</span></button>";
+  for (const [key, meta] of Object.entries(CLUSTER_META)) {
+    if (!counts[key]) continue;
+    html += '<button class="filter-btn ' + (activeCluster === key ? "active" : "") + '" data-cluster="' + key + '">' + meta.icon + " " + meta.label + ' <span class="count">' + counts[key] + "</span></button>";
+  }
+  document.getElementById("filters").innerHTML = html;
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", () => { const c = btn.dataset.cluster; activeCluster = c === activeCluster || c === "" ? null : c; refresh(); });
+  });
+}
+function renderCards(people) {
+  if (people.length === 0) { document.getElementById("cards").innerHTML = '<div class="empty">אין תוצאות. נסה חיפוש אחר.</div>'; return; }
+  let html = "";
+  for (const p of people) {
+    const meta = CLUSTER_META[p.cluster] || CLUSTER_META["uncategorized"];
+    const isExpanded = expandedId === p.id;
+    html += '<div class="card ' + (isExpanded ? "expanded" : "") + '" data-id="' + p.id + '"><div class="card-header"><div><div class="card-name">' + esc(p.name) + '</div><div class="card-title">' + esc(p.title) + '</div></div><div class="card-toggle">▾</div></div><div class="card-cluster cluster-' + p.cluster + '">' + meta.icon + " " + meta.label + '</div><div class="card-problem"><div class="label">הבעיה:</div><p>' + esc(p.problem) + '</p></div><div class="card-details"><div class="card-solution"><div class="label">הפתרון:</div><p>' + esc(p.solution) + "</p></div><div class=\"card-tags\">" + (p.tags || []).map(t => '<span class="tag">' + esc(t) + "</span>").join("") + '</div><div class="card-meta">מקור: ' + (p.source || "—") + " · נוסף: " + (p.added || "—") + "</div></div></div>";
+  }
+  document.getElementById("cards").innerHTML = html;
+  document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => { const id = card.dataset.id; expandedId = expandedId === id ? null : id; renderCards(lastRendered); });
+  });
+}
+let lastRendered = [];
+async function refresh() {
+  const q = document.getElementById("search").value.trim();
+  const people = await fetchPeople(q, activeCluster);
+  lastRendered = people;
+  document.getElementById("results-count").textContent = people.length === allPeople.length ? allPeople.length + " אנשי מקצוע" : people.length + " תוצאות";
+  renderCards(people); renderFilters();
+  document.getElementById("clear-search").classList.toggle("visible", q.length > 0);
+}
+async function init() { await fetchAll(); document.getElementById("total-count").textContent = allPeople.length; refresh(); }
+let debounceTimer;
+document.getElementById("search").addEventListener("input", () => { clearTimeout(debounceTimer); debounceTimer = setTimeout(refresh, 200); });
+document.getElementById("clear-search").addEventListener("click", () => { document.getElementById("search").value = ""; refresh(); });
+document.getElementById("add-toggle").addEventListener("click", () => { document.getElementById("add-form").classList.add("visible"); document.getElementById("add-toggle").style.display = "none"; });
+document.getElementById("cancel-add").addEventListener("click", () => { document.getElementById("add-form").classList.remove("visible"); document.getElementById("add-toggle").style.display = "block"; });
+document.getElementById("submit-person").addEventListener("click", async () => {
+  const name = document.getElementById("f-name").value.trim();
+  const title = document.getElementById("f-title").value.trim();
+  const problem = document.getElementById("f-problem").value.trim();
+  const solution = document.getElementById("f-solution").value.trim();
+  const cluster = document.getElementById("f-cluster").value;
+  const tagsRaw = document.getElementById("f-tags").value.trim();
+  const tags = tagsRaw ? tagsRaw.split(",").map(t => t.trim()).filter(Boolean) : [];
+  if (!name || !problem || !solution) { showToast("חובה למלא: שם, בעיה, פתרון"); return; }
+  const res = await fetch(API + "/people", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ name, title, problem, solution, cluster, tags }) });
+  if (res.ok) { showToast(name + " נוסף/ה למאגר"); ["f-name","f-title","f-problem","f-solution","f-tags"].forEach(id => document.getElementById(id).value = ""); document.getElementById("add-form").classList.remove("visible"); document.getElementById("add-toggle").style.display = "block"; await fetchAll(); document.getElementById("total-count").textContent = allPeople.length; refresh(); } else { showToast("שגיאה בהוספה"); }
+});
+function showToast(msg) { const el = document.getElementById("toast"); el.textContent = msg; el.classList.add("visible"); setTimeout(() => el.classList.remove("visible"), 2500); }
+function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+init();
+</script>
+</body>
+</html>
