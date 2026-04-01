@@ -1,0 +1,293 @@
+[
+  {
+    "id": "shay-attias",
+    "name": "Shay Attias",
+    "title": "CEO, venatata",
+    "problem": "מנכ\"לים עם הכנסות 100K+/חודש שעדיין לא יכולים לצאת לחופשה",
+    "solution": "בניית מערכות תפעוליות שמשחררות את המייסד מתלות יומיומית",
+    "cluster": "founder-bottleneck",
+    "tags": [
+      "מנכ\"לים",
+      "מערכות",
+      "תפעול",
+      "Scale"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "sara-ariel",
+    "name": "Sara Ariel",
+    "title": "Leadership Coach, Connect & Grow",
+    "problem": "מנהלים שרוצים להוביל בבטחון במקום להגיב למציאות",
+    "solution": "אימון מנהיגות שמחבר בין ביטחון עצמי לכלי ניהול מעשיים",
+    "cluster": "promoted-not-equipped",
+    "tags": [
+      "מנהלים",
+      "מנהיגות",
+      "אימון",
+      "ביטחון עצמי"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "evgeny-sinay",
+    "name": "Evgeny Sinay",
+    "title": "AI-First SEO/GEO/AEO Expert",
+    "problem": "עסקים שמרגישים שנשארים מאחור בדיגיטל ומשאירים כסף על הרצפה",
+    "solution": "SEO ו-AI לנוכחות דיגיטלית שמביאה לקוחות",
+    "cluster": "automation-paralysis",
+    "tags": [
+      "SEO",
+      "AI",
+      "דיגיטל",
+      "נוכחות"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "matan-lev",
+    "name": "Matan Lev",
+    "title": "Financial Systems Enablement, 20+ years MBA",
+    "problem": "בעיית הביצה והתרנגולת של התמחות: קשה להוכיח מומחיות בלי להתמקד, וקשה להתמקד בלי הוכחות",
+    "solution": "הכשרה ויעוץ למערכות פיננסיות עם דגש על התמחות ממוקדת",
+    "cluster": "expert-ranking",
+    "tags": [
+      "פיננסים",
+      "התמחות",
+      "positioning",
+      "MBA"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "assaf-sahar",
+    "name": "Assaf Sahar",
+    "title": "Interactive Digital Experiences, Games & Simulations",
+    "problem": "חווית לקוח דיגיטלית שלא מייצרת מעורבות אמיתית",
+    "solution": "חוויות אינטראקטיביות, משחקים וסימולציות שמייצרים engagement אמיתי",
+    "cluster": "first-impression-failure",
+    "tags": [
+      "UX",
+      "גיימיפיקציה",
+      "חוויית לקוח",
+      "דיגיטל"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "einat-ganel",
+    "name": "Einat GanEl",
+    "title": "Creative AI Flows, Process & Systems Consultant",
+    "problem": "עסקים קטנים ובינוניים חווים כאבי ראש תפעוליים: תהליכים שחוזרים, קשיים בניהול לקוחות, דברים שנופלים בין מערכות",
+    "solution": "אוטומציה ותהליכי AI שמחברים בין מערכות ומייעלים תפעול",
+    "cluster": "automation-paralysis",
+    "tags": [
+      "SMB",
+      "אוטומציה",
+      "AI",
+      "תפעול",
+      "מערכות"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "sigalit-sobel",
+    "name": "Sigalit Sobel Savyon",
+    "title": "AI ROI Lead, 62x faster implementation",
+    "problem": "הפער בין AI כסיסמת הנהלה לבין ערך תפעולי בשטח. ארגונים קנו רישיונות, עשו הדרכות, לא באמת עברו תהליך",
+    "solution": "הטמעת AI מקצה לקצה עם מדידת ROI אמיתית, לא רק רישיונות והדרכות",
+    "cluster": "ai-theater",
+    "tags": [
+      "AI",
+      "ROI",
+      "הטמעה",
+      "ארגונים",
+      "תהליך"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "omer-mayost",
+    "name": "Omer Mayost",
+    "title": "Fractional CAIO, Ex-Playtika",
+    "problem": "כלי CRM מורכבים מדי לפיתוח עסקי יומיומי",
+    "solution": "CRM פשוט ומדויק לפיתוח עסקי",
+    "cluster": "automation-paralysis",
+    "tags": [
+      "CRM",
+      "פיתוח עסקי",
+      "AI",
+      "Fractional"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "keren-weiss",
+    "name": "Keren Weiss",
+    "title": "Social Worker + Organizational Consultant",
+    "problem": "ארגונים שצריכים שינוי ופיתוח דרך הפריזמה האנושית",
+    "solution": "קידום שינויים ופיתוח ארגוני דרך הפריזמה האנושית של הארגון",
+    "cluster": "promoted-not-equipped",
+    "tags": [
+      "ארגוני",
+      "שינוי",
+      "עבודה סוציאלית",
+      "פיתוח"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "alon-laniado",
+    "name": "Alon Laniado",
+    "title": "Commercial Growth Strategist, Top 1% Creator",
+    "problem": "בעלי עסקים קטנים שלא מצליחים להביא לקוחות דרך לינקדאין. מחפשי עבודה שלא ממקסמים נוכחות",
+    "solution": "אסטרטגיית צמיחה מסחרית דרך לינקדאין, אופטימיזציה של פרופיל ותוכן",
+    "cluster": "first-impression-failure",
+    "tags": [
+      "LinkedIn",
+      "צמיחה",
+      "SMB",
+      "מחפשי עבודה"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "valin-tsur",
+    "name": "Valin Tsur Falckovitch",
+    "title": "Fractional Biz-Dev",
+    "problem": "מנכ\"לים ויזמים שהשוטף שוטף אותם ואין להם bandwidth לפרויקטי צמיחה",
+    "solution": "הוצאה לפועל של פרויקטי צמיחה עסקית כ-Fractional Biz-Dev",
+    "cluster": "founder-bottleneck",
+    "tags": [
+      "צמיחה",
+      "Fractional",
+      "מנכ\"לים",
+      "יזמים"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "noa-edelshtein",
+    "name": "Noa Edelshtein",
+    "title": "Executive & Leadership Coach",
+    "problem": "מנהלים שקודמו כי הם מקצועיים אבל אין להם מושג איך לנהל אנשים. מנהלים סקפטים, אגוזים קשים לפיצוח",
+    "solution": "אימון מנהלים שמתמודדים עם הפער בין מצוינות מקצועית ליכולת ניהול אנשים",
+    "cluster": "promoted-not-equipped",
+    "tags": [
+      "מנהלים",
+      "אימון",
+      "מנהיגות",
+      "יחסי אנוש"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "guy-cohen",
+    "name": "Guy Cohen",
+    "title": "AI Implementation for SMBs",
+    "problem": "אני עובד 12 שעות ביום ויודע שחצי מהזמן הולך לדברים שמחשב יכול לעשות במקומי, אבל אין לי מושג מאיפה להתחיל",
+    "solution": "הטמעת AI לעסקים קטנים ובינוניים: RAG, CRM, סוכני AI",
+    "cluster": "automation-paralysis",
+    "tags": [
+      "AI",
+      "SMB",
+      "אוטומציה",
+      "RAG",
+      "CRM"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "shira-meoded",
+    "name": "Shira Meoded",
+    "title": "Fintech, AI Risk Strategy",
+    "problem": "עסקים שלא מצליחים לסגור עסקאות עם לקוחות גדולים בגלל מורכבות חוזית",
+    "solution": "בניית הסכמים חכמים שעוזרים לסגור עסקאות עם לקוחות גדולים",
+    "cluster": "founder-bottleneck",
+    "tags": [
+      "Fintech",
+      "חוזים",
+      "עסקאות",
+      "לקוחות גדולים"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "tamar-zehavi",
+    "name": "Tamar Zehavi",
+    "title": "HealthTech Marketplace",
+    "problem": "משפחות לילדים עם צרכים מיוחדים לא מוצאות מטפלים מתאימים",
+    "solution": "מרקטפלייס שמחבר בין מטפלים למשפחות עם צרכים מיוחדים",
+    "cluster": "automation-paralysis",
+    "tags": [
+      "HealthTech",
+      "מרקטפלייס",
+      "נגישות",
+      "טיפול"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "liron-vardi",
+    "name": "Liron Vardi",
+    "title": "Brand Clarity + Marketing for Startups",
+    "problem": "סטארטאפים ברגע הקריטי שמבינים שצריך שיווק אבל לא יודעים מאיפה להתחיל. הליד הראשון שואל WTF?",
+    "solution": "פיצוח positioning ו-messaging לסטארטאפים בשלב מוקדם",
+    "cluster": "first-impression-failure",
+    "tags": [
+      "סטארטאפים",
+      "positioning",
+      "שיווק",
+      "messaging"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "revital-moskovich",
+    "name": "Revital Moskovich Salomon",
+    "title": "Visual Branding for Tech",
+    "problem": "מסרים מורכבים שלא מתורגמים לשפה ויזואלית ברורה",
+    "solution": "הפיכת מסרים מורכבים לשפה ויזואלית שמדברת",
+    "cluster": "first-impression-failure",
+    "tags": [
+      "מיתוג",
+      "ויזואלי",
+      "Tech",
+      "עיצוב"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  },
+  {
+    "id": "ronnie-shalman",
+    "name": "Ronnie Shalman",
+    "title": "Patent Litigation Attorney",
+    "problem": "חברות פארמה שצריכות חיפוש פטנטים, אסטרטגיה ותביעות",
+    "solution": "ליווי משפטי בפטנטים: חיפוש, אסטרטגיה וליטיגציה",
+    "cluster": "expert-ranking",
+    "tags": [
+      "פטנטים",
+      "פארמה",
+      "משפטי",
+      "IP"
+    ],
+    "source": "linkedin-comment",
+    "added": "2026-04-01"
+  }
+]
